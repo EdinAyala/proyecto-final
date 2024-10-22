@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Director</th>
+        <th>Año</th>
+        <th>Género</th>
+        <th>Duración</th>
+        <th>Sinopsis</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pelicula of peliculas; let i = index">
+        <td>{{ pelicula.titulo }}</td>
+        <td>{{ pelicula.director }}</td>
+        <td>{{ pelicula.anio }}</td>
+        <td>{{ pelicula.genero }}</td>
+        <td>{{ pelicula.duracion }} minutos</td>
+        <td>{{ pelicula.sinopsis }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="eliminarPelicula(i)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
