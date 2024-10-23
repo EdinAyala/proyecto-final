@@ -5,13 +5,10 @@ import { AgregarPeliculaComponent } from './agregar-pelicula/agregar-pelicula.co
 import { ListadoPeliculasComponent } from './listado-peliculas/listado-peliculas.component';
 
 export const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'agregar', component: AgregarPeliculaComponent },
-  { path: 'listado', component: ListadoPeliculasComponent },
+  { path: "", component:ListadoPeliculasComponent },
+  { path: "home", component: HomeComponent },
+  { path: "agregar", component: AgregarPeliculaComponent },
+  { path: "listado", component: ListadoPeliculasComponent }
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+
