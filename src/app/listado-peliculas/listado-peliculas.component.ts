@@ -1,32 +1,48 @@
-
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PeliculasService } from '../peliculas.service';
 import { Pelicula } from '../pelicula.model';
+import { AlertService } from '../alert.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { AgregarPeliculaComponent } from '../agregar-pelicula/agregar-pelicula.component';
 
 @Component({
   selector: 'app-listado-peliculas',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [AgregarPeliculaComponent,CommonModule],
   templateUrl: './listado-peliculas.component.html',
   styleUrls: ['./listado-peliculas.component.css']
 })
-export class ListadoPeliculasComponent {
-  
-  peliculas:Pelicula [] = [
-    { titulo: 'Inception', director: 'Christopher Nolan', anio: 2010, genero: 'Ciencia Ficción', duracion: 148, sinopsis: 'Un ladrón que roba secretos a través de los sueños.' },
-    { titulo: 'The Godfather', director: 'Francis Ford Coppola', anio: 1972, genero: 'Crimen', duracion: 175, sinopsis: 'La historia de la familia mafiosa Corleone.' },
-    { titulo: 'Pulp Fiction', director: 'Quentin Tarantino', anio: 1994, genero: 'Crimen', duracion: 154, sinopsis: 'Varios relatos entrelazados de criminales en Los Ángeles.' }
-  ];
+export class ListadoPeliculasComponent implements OnInit {
+  peliculas: Pelicula[] = [];
 
-  constructor(private peliculasService: PeliculasService) { }
+  constructor(
+    private peliculaService: PeliculasService,
+    private router: Router,
+    private alertService: AlertService
+  ) {}
 
   ngOnInit(): void {
-    this.peliculas = this.peliculasService.getPeliculas();
+    this.peliculaService.getPeliculas().subscribe(data => {
+      this.peliculas = data;
+    });
   }
 
-  eliminarPelicula(index: number): void {
-    this.peliculasService.eliminarPelicula(index);
+  editarPelicula(id: string): void {
+    this.router.navigate(['/editar', id]);
+  }
+
+  eliminarPelicula(id: string): void {
+    this.alertService.confirm('¿Estás seguro?', 'Esta acción eliminará la película.')
+      .then(result => {
+        if (result.isConfirmed) {
+          this.peliculaService.eliminarPelicula(id).subscribe(() => {
+            this.alertService.success('Película eliminada con éxito!');
+            this.ngOnInit();
+          }, error => {
+            this.alertService.error('Error al eliminar la película.');
+          });
+        }
+      });
   }
 }

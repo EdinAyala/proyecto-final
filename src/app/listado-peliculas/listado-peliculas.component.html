@@ -1,29 +1,29 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th>Título</th>
-        <th>Director</th>
-        <th>Año</th>
-        <th>Género</th>
-        <th>Duración</th>
-        <th>Sinopsis</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let pelicula of peliculas; let i = index">
-        <td>{{ pelicula.titulo }}</td>
-        <td>{{ pelicula.director }}</td>
-        <td>{{ pelicula.anio }}</td>
-        <td>{{ pelicula.genero }}</td>
-        <td>{{ pelicula.duracion }} minutos</td>
-        <td>{{ pelicula.sinopsis }}</td>
-        <td>
-          <button class="btn btn-danger" (click)="eliminarPelicula(i)">Eliminar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+    <app-agregar-pelicula></app-agregar-pelicula>
+    
+    <div class="container mt-4">
+      <div class="row">
+        <div *ngFor="let pelicula of peliculas" class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">{{ pelicula.titulo }}</h5>
+              <p class="card-text">{{ pelicula.director }} ({{ pelicula.anio }})</p>
+              <p class="card-text"><strong>Género:</strong> {{ pelicula.genero }}</p>
+              <p class="card-text"><strong>Duración:</strong> {{ pelicula.duracion }} min</p>
+              <p class="card-text"><strong>Sinopsis:</strong> {{ pelicula.sinopsis }}</p>
+              <button class="btn btn-warning mr-2" (click)="editarPelicula(pelicula.id)">Editar</button>
+              <button class="btn btn-danger" (click)="eliminarPelicula(pelicula.id)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+ 
+  
+  
 
 
   

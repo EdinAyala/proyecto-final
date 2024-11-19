@@ -1,41 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Pelicula } from './pelicula.model'; // Asegúrate de crear este modelo
+import { DataService } from './data.service';
+import { Pelicula } from './pelicula.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PeliculasService {
-  private peliculas: Pelicula[] = [
-    {
-      titulo: 'Inception',
-      director: 'Christopher Nolan',
-      anio: 2010,
-      genero: 'Ciencia Ficción',
-      duracion: 148,
-      sinopsis: 'Un ladrón que roba secretos corporativos a través del uso de la tecnología de los sueños.'
-    },
-    {
-      titulo: 'The Godfather',
-      director: 'Francis Ford Coppola',
-      anio: 1972,
-      genero: 'Crimen',
-      duracion: 175,
-      sinopsis: 'La historia de la familia Corleone y su imperio criminal.'
-    }
-    // Agrega más películas según sea necesario
-  ];
+  private dbPath = 'navidad';
 
-  constructor() { }
+  constructor(private dataService: DataService) {}
 
-  getPeliculas(): Pelicula[] {
-    return this.peliculas;
+  getPeliculas() {
+    return this.dataService.getCollection(this.dbPath).pipe(
+      map((data: any) => {
+        const peliculasArray: Pelicula[] = [];
+        for (const key in data) {
+          if (data.hasOwnProperty(key)) {
+            peliculasArray.push({ id: key, ...data[key] });
+          }
+        }
+        return peliculasArray;
+      })
+    );
   }
 
-  agregarPelicula(pelicula: Pelicula): void {
-    this.peliculas.push(pelicula);
+  agregarPelicula(pelicula: Pelicula) {
+    return this.dataService.addItem(this.dbPath, pelicula);
   }
 
-  eliminarPelicula(index: number): void {
-    this.peliculas.splice(index, 1);
+  actualizarPelicula(id: string, pelicula: Pelicula) {
+    return this.dataService.updateItem(this.dbPath, id, pelicula);
+  }
+
+  eliminarPelicula(id: string) {
+    return this.dataService.deleteItem(this.dbPath, id);
   }
 }
+

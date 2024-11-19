@@ -1,23 +1,42 @@
-
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PeliculasService } from '../peliculas.service';
-import { Pelicula } from '../pelicula.model';
-import { FormsModule } from '@angular/forms';
+import { AlertService } from '../alert.service';
 
 @Component({
   selector: 'app-agregar-pelicula',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './agregar-pelicula.component.html',
   styleUrls: ['./agregar-pelicula.component.css']
 })
 export class AgregarPeliculaComponent {
-  nuevaPelicula: Pelicula = { titulo: '', director: '', anio: 0, genero: '', duracion: 0, sinopsis: '' };
+  peliculaForm: FormGroup;
 
-  constructor(private peliculasService: PeliculasService) { }
+  constructor(
+    private fb: FormBuilder,
+    private peliculasService: PeliculasService,
+    private alertService: AlertService
+  ) {
+    this.peliculaForm = this.fb.group({
+      titulo: [''],
+      director: [''],
+      anio: [0],
+      genero: [''],
+      duracion: [0],
+      sinopsis: ['']
+    });
+  }
 
   agregarPelicula(): void {
-    this.peliculasService.agregarPelicula(this.nuevaPelicula);
-    this.nuevaPelicula = { titulo: '', director: '', anio: 0, genero: '', duracion: 0, sinopsis: '' };
+    if (this.peliculaForm.valid) {
+      this.peliculasService.agregarPelicula(this.peliculaForm.value).subscribe(() => {
+        this.alertService.success('Película agregada con éxito!');
+        this.peliculaForm.reset();
+      }, error => {
+        this.alertService.error('Error al agregar la película.');
+      });
+    }
   }
 }
+
