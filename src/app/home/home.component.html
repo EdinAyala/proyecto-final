@@ -1,1 +1,21 @@
-<p>home works!</p>
+
+ <br><br>
+<div class="container mt-4">
+    <div class="row">
+      <div *ngFor="let pelicula of peliculas" class="col-md-4">
+        <div class="card mb-3">
+          <img *ngIf="pelicula.imagenUrl" [src]="pelicula.imagenUrl" class="card-img-top" alt="{{ pelicula.titulo }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ pelicula.titulo }}</h5>
+            <p class="card-text"><strong>Director:</strong>{{ pelicula.director }}</p>
+            <p class="card-text"><strong>Año:</strong>({{ pelicula.anio }})</p>
+            <p class="card-text"><strong>Género:</strong> {{ pelicula.genero }}</p>
+            <p class="card-text"><strong>Duración:</strong> {{ pelicula.duracion }} min</p>
+            <p class="card-text"><strong>Sinopsis:</strong> {{ pelicula.sinopsis }}</p>
+            <!--button class="btn btn-warning mr-2" *ngIf="pelicula.id" (click)="editarPelicula(pelicula.id!)">Editar</button>
+            <button class="btn btn-danger" *ngIf="pelicula.id" (click)="eliminarPelicula(pelicula.id!)">Eliminar</button-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -4,11 +4,12 @@ import { FormGroup, FormBuilder, FormsModule, ReactiveFormsModule } from '@angul
 import { PeliculasService } from '../peliculas.service';
 import { AlertService } from '../alert.service';
 import { Pelicula } from '../pelicula.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-editar-pelicula',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [CommonModule,FormsModule, ReactiveFormsModule],
   templateUrl: './editar-pelicula.component.html',
   styleUrls: ['./editar-pelicula.component.css']
 })
@@ -29,7 +30,8 @@ export class EditarPeliculaComponent implements OnInit {
       anio: [0],
       genero: [''],
       duracion: [0],
-      sinopsis: ['']
+      sinopsis: [''],
+      imagenUrl: ['']
     });
   }
 
@@ -45,12 +47,17 @@ export class EditarPeliculaComponent implements OnInit {
     }
   }
 
-  actualizarPelicula() {
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    this.peliculaForm.patchValue({ imagenUrl: URL.createObjectURL(file) });
+  }
+
+  actualizarPelicula(): void {
     if (this.peliculaForm.valid && this.peliculaId) {
       this.peliculaService.eliminarPelicula(this.peliculaId).subscribe(() => {
         this.peliculaService.agregarPelicula(this.peliculaForm.value).subscribe(() => {
           this.alertService.success('Película actualizada con éxito!');
-          this.router.navigate(['/']);
+          this.router.navigate(['/listado']);
         }, error => {
           this.alertService.error('Error al actualizar la película.');
         });
@@ -60,5 +67,3 @@ export class EditarPeliculaComponent implements OnInit {
     }
   }
 }
-
-
