@@ -1,56 +1,40 @@
-
-
-
-<!--h1>Editar Película</h1>
-<form *ngIf="pelicula" (ngSubmit)="actualizarPelicula()">
-  <label for="titulo">Título:</label>
-  <input type="text" id="titulo" [(ngModel)]="pelicula.titulo" name="titulo" required>
-  <br>
-  <label for="director">Director:</label>
-  <input type="text" id="director" [(ngModel)]="pelicula.director" name="director" required>
-  <br>
-  <label for="anio">Año:</label>
-  <input type="number" id="anio" [(ngModel)]="pelicula.anio" name="anio" required>
-  <br>
-  <label for="genero">Género:</label>
-  <input type="text" id="genero" [(ngModel)]="pelicula.genero" name="genero" required>
-  <br>
-  <label for="duracion">Duración (min):</label>
-  <input type="number" id="duracion" [(ngModel)]="pelicula.duracion" name="duracion" required>
-  <br>
-  <label for="sinopsis">Sinopsis:</label>
-  <textarea id="sinopsis" [(ngModel)]="pelicula.sinopsis" name="sinopsis" required></textarea>
-  <br>
-  <button type="submit">Actualizar</button>
-</form-->
-
 <form [formGroup]="peliculaForm" (ngSubmit)="actualizarPelicula()" class="container mt-4">
-  <div class="form-group">
-    <label for="titulo">Título:</label>
-    <input id="titulo" formControlName="titulo" class="form-control" />
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="titulo">Título:</label>
+      <input id="titulo" formControlName="titulo" class="form-control" />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="director">Director:</label>
+      <input id="director" formControlName="director" class="form-control" />
+    </div>
   </div>
-  <div class="form-group">
-    <label for="director">Director:</label>
-    <input id="director" formControlName="director" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="anio">Año:</label>
-    <input id="anio" formControlName="anio" type="number" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="genero">Género:</label>
-    <input id="genero" formControlName="genero" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="duracion">Duración:</label>
-    <input id="duracion" formControlName="duracion" type="number" class="form-control" />
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="anio">Año:</label>
+      <input id="anio" formControlName="anio" type="number" class="form-control" />
+    </div>
+    <div class="form-group col-md-4">
+      <label for="genero">Género:</label>
+      <input id="genero" formControlName="genero" class="form-control" />
+    </div>
+    <div class="form-group col-md-4">
+      <label for="duracion">Duración:</label>
+      <input id="duracion" formControlName="duracion" type="number" class="form-control" />
+    </div>
   </div>
   <div class="form-group">
     <label for="sinopsis">Sinopsis:</label>
-    <textarea id="sinopsis" formControlName="sinopsis" class="form-control"></textarea>
+    <textarea id="sinopsis" formControlName="sinopsis" class="form-control" rows="4"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="imagen">Imagen:</label>
+    <input type="file" class="form-control-file" (change)="onFileSelected($event)" />
+    <img *ngIf="peliculaForm.get('imagenUrl')?.value" [src]="peliculaForm.get('imagenUrl')?.value" alt="Imagen de la Película" class="img-thumbnail mt-2">
   </div>
   <button type="submit" class="btn btn-primary">Actualizar Película</button>
 </form>
+
 
   
 

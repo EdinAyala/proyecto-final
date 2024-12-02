@@ -6,7 +6,8 @@ import { ListadoPeliculasComponent } from './listado-peliculas/listado-peliculas
 import { EditarPeliculaComponent } from './editar-pelicula/editar-pelicula.component';
 
 export const routes: Routes = [
-  { path: '', component: ListadoPeliculasComponent }, 
+  { path: 'home', component: HomeComponent },
+  { path: 'listado', component: ListadoPeliculasComponent }, 
   { path: 'agregar', component: AgregarPeliculaComponent }, 
   { path: 'editar/:id', component: EditarPeliculaComponent }
 ];

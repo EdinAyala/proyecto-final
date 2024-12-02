@@ -1,11 +1,10 @@
-export class Pelicula {
-  constructor(
-    public id: string,
-    public titulo: string,
-    public director: string,
-    public anio: number,
-    public genero: string,
-    public duracion: number,
-    public sinopsis: string
-  ) {}
+export interface Pelicula {
+  id?: string; // ID opcional para manejar las operaciones
+  titulo: string;
+  director: string;
+  anio: number;
+  genero: string;
+  duracion: number;
+  sinopsis: string;
+  imagenUrl?: string; // URL de la imagen opcional
 }

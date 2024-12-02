@@ -15,34 +15,26 @@ import { AgregarPeliculaComponent } from '../agregar-pelicula/agregar-pelicula.c
 })
 export class ListadoPeliculasComponent implements OnInit {
   peliculas: Pelicula[] = [];
-
-  constructor(
-    private peliculaService: PeliculasService,
-    private router: Router,
-    private alertService: AlertService
-  ) {}
-
+  constructor( private peliculaService: PeliculasService, 
+    private router: Router, private alertService: AlertService 
+  ) {} 
   ngOnInit(): void {
-    this.peliculaService.getPeliculas().subscribe(data => {
-      this.peliculas = data;
-    });
-  }
+     this.peliculaService.getPeliculas().subscribe(data => {
+       this.peliculas = data; 
+      }); 
+    } 
+    editarPelicula(id: string): void {
+       this.router.navigate(['/editar', id]); 
+      } 
+      eliminarPelicula(id: string): void { 
+        this.alertService.confirm('¿Estás seguro?', 'Esta acción eliminará la película.') .then(result => { 
+          if (result.isConfirmed) { this.peliculaService.eliminarPelicula(id).subscribe(() => {
+             this.alertService.success('Película eliminada con éxito!'); 
+             this.ngOnInit();
+             }, error => { this.alertService.error('Error al eliminar la película.');
 
-  editarPelicula(id: string): void {
-    this.router.navigate(['/editar', id]);
-  }
-
-  eliminarPelicula(id: string): void {
-    this.alertService.confirm('¿Estás seguro?', 'Esta acción eliminará la película.')
-      .then(result => {
-        if (result.isConfirmed) {
-          this.peliculaService.eliminarPelicula(id).subscribe(() => {
-            this.alertService.success('Película eliminada con éxito!');
-            this.ngOnInit();
-          }, error => {
-            this.alertService.error('Error al eliminar la película.');
-          });
-        }
-      });
-  }
-}
+              });
+             } 
+            }); 
+          }
+       }
