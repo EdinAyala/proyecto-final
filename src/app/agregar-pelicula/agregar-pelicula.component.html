@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 <br>
+=======
+>>>>>>> c6e59afdf7e653dd36d586b2d7b6d1ece227e1b0
 <form [formGroup]="peliculaForm" (ngSubmit)="agregarPelicula()" class="container mt-4">
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -31,10 +34,17 @@
   <div class="form-group">
     <label for="imagen">Imagen:</label>
     <input type="file" class="form-control-file" (change)="onFileSelected($event)" />
+<<<<<<< HEAD
     <img *ngIf="peliculaForm.get('imagenUrl')?.value" [src]="peliculaForm.get('imagenUrl')?.value" alt="Imagen de la Película" class="img-thumbnail mt-2">
+=======
+    <img *ngIf="peliculaForm.get('imagenUrl')?.value" [src]="peliculaForm.get('imagenUrl')?.value" alt="Imagen de la Película" class="mt-2" width="150">
+>>>>>>> c6e59afdf7e653dd36d586b2d7b6d1ece227e1b0
   </div>
   <button type="submit" class="btn btn-primary">Agregar Película</button>
 </form>
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c6e59afdf7e653dd36d586b2d7b6d1ece227e1b0
