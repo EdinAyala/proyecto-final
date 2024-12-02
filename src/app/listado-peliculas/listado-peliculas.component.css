@@ -1,0 +1,24 @@
+/*:host {
+    display: block;
+    background: url('../../../public/background/cine\ 1.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: black; /* Para que el texto sea visible sobre un fondo oscuro 
+  }*/
+  
+  .img-thumbnail {
+    max-width: 100%;
+    height: auto;
+    max-height: 100px; /* Ajusta esta altura según tus necesidades */
+    object-fit: cover; /* Asegura que la imagen mantenga sus proporciones */
+  }
+
+  .card-img-top {
+    max-width: 500%;
+    height: auto;
+    max-height: 500px; /* Ajusta esta altura según tus necesidades */
+    object-fit: cover; /* Asegura que la imagen mantenga sus proporciones */
+  }
+  
+  
+  

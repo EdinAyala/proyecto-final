@@ -1,31 +1,3 @@
-<!--form [formGroup]="peliculaForm" (ngSubmit)="agregarPelicula()" class="container mt-4">
-  <div class="form-group">
-    <label for="titulo">Título:</label>
-    <input id="titulo" formControlName="titulo" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="director">Director:</label>
-    <input id="director" formControlName="director" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="anio">Año:</label>
-    <input id="anio" formControlName="anio" type="number" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="genero">Género:</label>
-    <input id="genero" formControlName="genero" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="duracion">Duración:</label>
-    <input id="duracion" formControlName="duracion" type="number" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="sinopsis">Sinopsis:</label>
-    <textarea id="sinopsis" formControlName="sinopsis" class="form-control"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Agregar Película</button>
-</form-->
-
 <form [formGroup]="peliculaForm" (ngSubmit)="agregarPelicula()" class="container mt-4">
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -55,6 +27,12 @@
     <label for="sinopsis">Sinopsis:</label>
     <textarea id="sinopsis" formControlName="sinopsis" class="form-control" rows="4"></textarea>
   </div>
+  <div class="form-group">
+    <label for="imagen">Imagen:</label>
+    <input type="file" class="form-control-file" (change)="onFileSelected($event)" />
+    <img *ngIf="peliculaForm.get('imagenUrl')?.value" [src]="peliculaForm.get('imagenUrl')?.value" alt="Imagen de la Película" class="mt-2" width="150">
+  </div>
   <button type="submit" class="btn btn-primary">Agregar Película</button>
 </form>
+
 

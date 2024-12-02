@@ -1,0 +1,16 @@
+/*:host {
+    display: block;
+ 
+    color: white;  //Asegura que el texto sea visible 
+  }
+  
+  label, h5, p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); // Agrega sombra al texto 
+  }
+  
+  .form-control, .form-control-file, .btn {
+    background-color: rgba(255, 255, 255, 0.8); // Fondo semi-transparente para los inputs y botones //
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: black;
+  }*/
+  
