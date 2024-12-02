@@ -56,6 +56,10 @@ export class AgregarPeliculaComponent {
                               } 
                             }
                               
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> a2bdd09 (Actualizando proyecto)
 
 
 
@@ -96,4 +100,13 @@ export class AgregarPeliculaComponent {
                  }
                }
 >>>>>>> c6e59afdf7e653dd36d586b2d7b6d1ece227e1b0
+<<<<<<< HEAD
+=======
+=======
+
+
+
+
+>>>>>>> a5f6180 (Actualizando el proyecto)
+>>>>>>> a2bdd09 (Actualizando proyecto)
 
