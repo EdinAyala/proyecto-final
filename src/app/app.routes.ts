@@ -5,14 +5,18 @@ import { AgregarPeliculaComponent } from './agregar-pelicula/agregar-pelicula.co
 import { ListadoPeliculasComponent } from './listado-peliculas/listado-peliculas.component';
 import { EditarPeliculaComponent } from './editar-pelicula/editar-pelicula.component';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 export const routes: Routes = [
 =======
+=======
+>>>>>>> 32d5d18 (Añadiendo login)
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> a2bdd09 (Actualizando proyecto)
   { path: 'home', component: HomeComponent },
@@ -22,6 +26,8 @@ export const routes: Routes = [
 <<<<<<< HEAD
 =======
 =======
+=======
+>>>>>>> 32d5d18 (Añadiendo login)
 { path: '', redirectTo: '/login', pathMatch: 'full' },
 { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
 { path: 'listado', component: ListadoPeliculasComponent, canActivate: [AuthGuard] },
@@ -30,8 +36,11 @@ export const routes: Routes = [
 { path: 'login', component: LoginComponent }, 
 { path: 'registro', component: RegisterComponent }, 
 { path: '**', redirectTo: '/login'} 
+<<<<<<< HEAD
 >>>>>>> a5f6180 (Actualizando el proyecto)
 >>>>>>> a2bdd09 (Actualizando proyecto)
+=======
+>>>>>>> 32d5d18 (Añadiendo login)
 ];
 
 
