@@ -1,0 +1,52 @@
+.quienes-somos {
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .quienes-somos h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .quienes-somos p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    color: #555;
+  }
+  
+  .quienes-somos ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .quienes-somos ul li {
+    font-size: 1.2em;
+    color: #333;
+    padding: 5px 0;
+  }
+  
+  .equipo-img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .cta-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .cta-button:hover {
+    background-color: #0056b3;
+  }
+  

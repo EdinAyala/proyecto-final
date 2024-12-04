@@ -2,8 +2,8 @@
  <br><br>
 <div class="container mt-4">
     <div class="row">
-      <div *ngFor="let pelicula of peliculas" class="col-md-4">
-        <div class="card mb-3">
+      <div *ngFor="let pelicula of peliculas" class="col-md-3">
+        <div class="card mb-4">
           <img *ngIf="pelicula.imagenUrl" [src]="pelicula.imagenUrl" class="card-img-top" alt="{{ pelicula.titulo }}">
           <div class="card-body">
             <h5 class="card-title">{{ pelicula.titulo }}</h5>
