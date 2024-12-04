@@ -12,6 +12,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./agregar-pelicula.component.css']
 })
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 32d5d18 (Añadiendo login)
 export class AgregarPeliculaComponent {
    peliculaForm: FormGroup;
     selectedFile: File | null = null;
@@ -57,13 +60,17 @@ export class AgregarPeliculaComponent {
                             }
                               
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> a2bdd09 (Actualizando proyecto)
+=======
+>>>>>>> 32d5d18 (Añadiendo login)
 
 
 
 
+<<<<<<< HEAD
 =======
 export class AgregarPeliculaComponent { 
   peliculaForm: FormGroup; 
@@ -109,4 +116,6 @@ export class AgregarPeliculaComponent {
 
 >>>>>>> a5f6180 (Actualizando el proyecto)
 >>>>>>> a2bdd09 (Actualizando proyecto)
+=======
+>>>>>>> 32d5d18 (Añadiendo login)
 
